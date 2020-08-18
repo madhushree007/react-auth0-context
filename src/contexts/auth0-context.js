@@ -60,7 +60,8 @@ export function Auth0Provider({ children }) {
             user,
             isLoading,
             login: (...p) => auth0Client.loginWithRedirect(...p),
-            logout: (...p) => auth0Client.logout(...p)
+            logout: (...p) => auth0Client.logout(...p),
+            getToken: (...p) => auth0Client.getTokenSilently(...p)
         }}>
             {children}
         </Auth0Context.Provider>
