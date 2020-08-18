@@ -1,22 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Auth0Context } from './contexts/auth0-context';
+import { useAuth0 } from './contexts/auth0-context';
 
 function App() {
-  const auth0 = useContext(Auth0Context);
+  const auth0 = useAuth0();
   console.log(auth0);
   return (
     <Router>
       <div>
         <Header />
         <Switch>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
+          </PrivateRoute>
           <Route path="/" exact={true}>
             <Home />
           </Route>

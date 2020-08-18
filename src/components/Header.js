@@ -12,7 +12,13 @@ export default function Header() {
             </div>
             <div>
                 {!isAuthenticated && <button onClick={login}>Login</button>}
-                {isAuthenticated && user && <button onClick={logout}>Logout</button>}
+                {isAuthenticated && user && (
+                    <>
+                        <button>{user.name}</button>
+                        <button onClick={logout}>Logout</button>
+                    </>
+                )
+                }
             </div>
         </div>
     )
